@@ -4,7 +4,8 @@ pipeline {
     stages {
         stage('build') {
             steps {
-                sh 'cd client && npm install'
+                sh 'cd client'
+                sh 'npm install'
             }
         }
 
