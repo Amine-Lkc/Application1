@@ -1,0 +1,7 @@
+FROM node:16
+WORKDIR /App
+COPY package*.json /App/
+RUN npm install
+COPY ./ /App/ 
+EXPOSE 3001
+CMD [ "npm","start" ]
