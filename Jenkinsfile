@@ -4,7 +4,8 @@ pipeline {
     stages {
         stage('build') {
             steps {
-                sh "Building...."
+                sh cd clients
+                sh npm install
             }
         }
 
