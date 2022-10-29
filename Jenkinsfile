@@ -8,7 +8,7 @@ pipeline {
         
         stage('build') {
             steps {
-                sh 'cd client && docker build -t medaminelmk/front:front .' 
+                sh 'cd server && docker build -t medaminelmk/front:front .' 
             }
         }
         stage('login') {
