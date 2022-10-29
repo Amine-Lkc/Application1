@@ -5,14 +5,10 @@ pipeline {
         DOCKERHUB_CREDENTIALS = credentials('DockerJenkins')
         }
     stages {
-        stage('CD') {
-            steps {
-                sh 'cd client' 
-            }
-        }
+        
         stage('build') {
             steps {
-                sh 'docker build -t medaminelmk/front:front .' 
+                sh 'cd client && docker build -t medaminelmk/front:front .' 
             }
         }
         stage('login') {
