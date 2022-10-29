@@ -1,16 +1,29 @@
 pipeline {
     agent any
     
+    environment {
+        DOCKERHUB_CREDENTIALS = credentials('DockerJenkins')
+        }
     stages {
+        stage('CD') {
+            steps {
+                sh 'cd client' 
+            }
+        }
         stage('build') {
             steps {
-                sh 'cd client && npm install' 
+                sh 'docker build -t medaminelmk/front:front .' 
+            }
+        }
+        stage('login') {
+            steps {
+                sh 'echo $DOCKERHUB_CREDENTIALS_PSW | docker login -u medaminelmk' 
             }
         }
 
-        stage('testing') {
+        stage('push') {
             steps {
-                echo "testing...."
+                sh "docker push bahachalbia/front:front"
             }
         }
     }
